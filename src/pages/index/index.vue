@@ -9,7 +9,7 @@
       duration="1000"
     >
       <swiper-item v-for="(item, index) in imgUrls" :key="index">
-        <img :src="item" style="width: 100vw; height: 300rpx;"/>
+        <img :src="item" style="width: 100vw; height: 100%;"/>
       </swiper-item>
     </swiper>
 
@@ -18,8 +18,8 @@
 
       <div class="userinfo-nickname">
         <div>
-          <card :text="userInfo.nickName"></card>
-          <card :text="userInfo.class"></card>
+          <div class="name">{{userInfo.nickName}}</div>
+          <div class="name">{{userInfo.class}}</div>
         </div>
       </div>
 
@@ -78,7 +78,6 @@
 </template>
 
 <script>
-import card from '@/components/card'
 
 export default {
   data () {
@@ -97,9 +96,7 @@ export default {
     }
   },
 
-  components: {
-    card
-  },
+  components: {},
 
   methods: {
     bindViewTap () {
@@ -141,6 +138,11 @@ export default {
   flex: 1;
   align-items: center;
   color: #aaa;
+
+  .name {
+    font-size: 14px;
+    padding: 10rpx;
+  }
 }
 
 .function {
