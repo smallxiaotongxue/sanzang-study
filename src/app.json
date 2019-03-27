@@ -2,14 +2,16 @@
   "pages": [
     "pages/index/main",
     "pages/ranking/main",
+    "pages/myStudy/main",
     "pages/logs/main",
     "pages/counter/main"
   ],
   "window": {
-    "backgroundTextStyle": "light",
+    "backgroundTextStyle": "dark",
     "navigationBarBackgroundColor": "#000",
     "navigationBarTitleText": "三藏学习排位",
-    "navigationBarTextStyle": "white"
+    "navigationBarTextStyle": "white",
+    "enablePullDownRefresh": true
   },
   "tabBar": {
     "color": "#999",
@@ -20,18 +22,18 @@
     "list": [{
       "text": "首页",
       "pagePath": "pages/index/main",
-      "iconPath": "static/tabs/home.png",
-      "selectedIconPath": "static/tabs/home-active.png"
+      "iconPath": "static/images/tabs/home.png",
+      "selectedIconPath": "static/images/tabs/home-active.png"
     }, {
       "text": "面试题",
       "pagePath": "pages/logs/main",
-      "iconPath": "static/tabs/orders.png",
-      "selectedIconPath": "static/tabs/orders-active.png"
+      "iconPath": "static/images/tabs/orders.png",
+      "selectedIconPath": "static/images/tabs/orders-active.png"
     }, {
       "text": "我的",
       "pagePath": "pages/logs/main",
-      "iconPath": "static/tabs/orders.png",
-      "selectedIconPath": "static/tabs/orders-active.png"
+      "iconPath": "static/images/tabs/orders.png",
+      "selectedIconPath": "static/images/tabs/orders-active.png"
     }],
 
     "position": "bottom"

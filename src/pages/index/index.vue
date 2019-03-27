@@ -34,17 +34,46 @@
     <div class="function">
       <div class="function-item" @click="goToPage('/pages/ranking/main')">
         <div class="function-title">
-          <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
+          <img class="title-icon" src="/static/images/user.png" background-size="cover" />
           <span>班级排名</span>
         </div>
       </div>
-      <div class="function-item" @click="goToPage('/pages/counter/main')">
+      <div class="function-item" @click="goToPage('/pages/myStudy/main')">
         <div class="function-title">
-          <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
-          <span>段位查询</span>
+          <img class="title-icon" src="/static/images/user.png" background-size="cover" />
+          <span>我的学习</span>
         </div>
       </div>
     </div>
+
+    <!-- 热门推荐文章 -->
+    <div class="articles">
+      <div class="articles-title">
+        <!--<img alt="图标">-->
+        <span>热门推荐</span>
+      </div>
+      <div class="articles-contents">
+        <ul class="articles-list">
+          <li class="list-item" v-for="(item, index) in 5" :key="index">
+            <div class="item-head">
+              <div class="head-left">
+                <img class="upload-icon" src="/static/images/user.png" background-size="cover" alt="icon">
+                <span class="upload-name">CopPan</span>
+              </div>
+              <span class="upload-module-name">Java</span>
+            </div>
+            <div class="item-body">
+              <div class="news-title">Java 8新的时间日期库的20个使用示例</div>
+              <div class="news-intro">有人问我学习一个新库的最佳途径是什么？我的回答是，就是在实际项目中那样去使用它。在一个真实的项目中会有各种各样的需求，这会促使开发人员去探索和研究这个新库。简言之，只有任务本身才会真正促使你去探索及学习。java 8的新的日期及时间API也是一样。</div>
+            </div>
+            <div class="item-foot">
+              <div class="news-comment">评论</div>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+
   </div>
 </template>
 
@@ -143,6 +172,118 @@ export default {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+
+      .title-icon {
+        width: 80rpx;
+        height: 80rpx;
+        margin: 10rpx;
+        border-radius: 50%;
+      }
+    }
+  }
+}
+
+.articles {
+  margin: 20rpx 0;
+  background: #f2f2f2;
+
+  .articles-title {
+    font-size: 14px;
+    color: #0e97ff;
+    margin: 10rpx 0;
+    padding: 20rpx;
+    background: #fff;
+    /*box-shadow: 10rpx 10rpx 15rpx 0rpx #ddd;*/
+  }
+
+  .articles-contents {
+    margin-top: 10rpx;
+  }
+
+}
+
+.articles-list {
+
+  .list-item {
+    background: #fff;
+    padding: 15rpx 0;
+    margin: 10rpx 0;
+    transition: all .3s linear;
+
+    &:active {
+      background: #a6e0ff;
+    }
+
+    .item-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      min-height: 80rpx;
+      padding: 0 20rpx;
+
+      .head-left {
+        display: flex;
+        align-items: center;
+      }
+
+      .upload-icon {
+        width: 50rpx;
+        height: 50rpx;
+        margin: 5rpx;
+        border-radius: 50%;
+      }
+
+      .upload-name {
+        font-size: 12px;
+        margin: 0 5rpx;
+      }
+
+      .upload-module-name {
+        color: #c2c2c2;
+        font-size: 12px;
+        margin: 0 20rpx;
+      }
+    }
+
+    .item-body {
+      padding: 0 20rpx;
+
+      .news-title {
+        font-size: 16px;
+        font-weight: bold;
+      }
+
+      .news-intro {
+        color: #c2c2c2;
+        font-size: 12px;
+        line-height: 16px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        word-break: break-all;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+      }
+    }
+
+    .item-foot {
+      padding: 0 20rpx;
+      margin-top: 10rpx;
+
+      .news-comment {
+        color: #c2c2c2;
+        font-size: 12px;
+        vertical-align: center;
+
+        &:before {
+          content: '';
+          display: inline-block;
+          width: 16rpx;
+          height: 16rpx;
+          background: #c2c2c2;
+          margin-right: 10rpx;
+        }
+      }
     }
   }
 }
