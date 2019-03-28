@@ -6,9 +6,16 @@
           <img class="intro-cover__img" src="/static/images/icon-1.png"  alt="icon">
         </div>
         <div class="intro-right">
-          <h4 class="book-name">Java轻松学</h4>
-          <p class="book-section">共10章</p>
-          <p class="total-number">有10人正在阅读</p>
+          <h4 class="book-name">{{cardDetails.name || 'Book Name'}}</h4>
+          <p class="book-section" v-if="cardDetails.sections">共{{cardDetails.sections}}章</p>
+          <p class="total-number" v-if="cardDetails.totalPeople">有{{cardDetails.totalPeople}}人正在阅读</p>
+          <div class="level-status" v-if="cardDetails.currentLevel && cardDetails.allLevel">
+            <p class="progress-title">闯关进度 {{cardDetails.currentLevel + '/' + cardDetails.allLevel}} 关</p>
+            <i-progress
+              :percent="readPrecent"
+              :status="precentStatus"
+            ></i-progress>
+          </div>
         </div>
       </div>
       <div class="card-options">
@@ -28,8 +35,34 @@
 </template>
 
 <script>
+
 export default {
-  props: {}
+  props: {
+    cardDetails: {
+      type: Object,
+      default: function () {
+        return {
+          name: 'Book Name',
+          sections: '',
+          totalPeople: '',
+          currentLevel: '',
+          allLevel: ''
+        }
+      }
+    }
+  },
+  data () {
+    return {
+    }
+  },
+  computed: {
+    readPrecent () {
+      return this.cardDetails.currentLevel / this.cardDetails.allLevel * 100 || ''
+    },
+    precentStatus () {
+      return this.readPrecent === 100 ? 'success' : 'active'
+    }
+  }
 }
 </script>
 
@@ -53,7 +86,6 @@ export default {
 
   .card-intro {
     display: flex;
-    align-items: center;
     padding: 30rpx 30rpx 10rpx;
 
     .intro-left {
@@ -79,6 +111,10 @@ export default {
         color: #c2c2c2;
         font-size: 12px;
         line-height: 16px;
+      }
+
+      .level-status {
+
       }
     }
   }

@@ -37,5 +37,8 @@
     }],
 
     "position": "bottom"
+  },
+  "usingComponents": {
+    "i-progress": "../static/iView_components/progress/index"
   }
 }
