@@ -25,6 +25,7 @@
 import bookCard from '@/components/book-card'
 
 export default {
+  name: 'recommendList',
   props: {
     bookList: {
       type: Array,

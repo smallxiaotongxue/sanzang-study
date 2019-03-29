@@ -3,6 +3,9 @@
     "pages/index/main",
     "pages/ranking/main",
     "pages/myStudy/main",
+    "pages/section/main",
+    "pages/question/main",
+    "pages/interview/main",
     "pages/logs/main",
     "pages/counter/main"
   ],
@@ -26,7 +29,7 @@
       "selectedIconPath": "static/images/tabs/home-active.png"
     }, {
       "text": "面试题",
-      "pagePath": "pages/logs/main",
+      "pagePath": "pages/interview/main",
       "iconPath": "static/images/tabs/orders.png",
       "selectedIconPath": "static/images/tabs/orders-active.png"
     }, {

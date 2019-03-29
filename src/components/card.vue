@@ -8,6 +8,8 @@
 
 <script>
 export default {
+  name: 'card',
+
   props: ['text']
 }
 </script>

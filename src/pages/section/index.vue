@@ -1,82 +1,39 @@
 <template>
-  <div>
-    <div class="my-tab">
-      <i-tabs :current="current" @change="handleChange">
-        <i-tab v-for="(item, index) in TAB_NAME_LIST" :key="item.key" :title="item.title"></i-tab>
-      </i-tabs>
+  <div class="section-wrap">
+    <div class="section-name">
+      <img class="name-image" src="/static/images/user.png" background-size="cover" />
+      <span class="text">Book Name</span>
+    </div>
 
-      <swiper class="tab-content" style="height:calc(100vh - 84rpx)" :current="current" @change="tabChange">
-        <!-- 推荐书籍 -->
-        <swiper-item>
-          <scroll-view scroll-y="true" style="height: 100%">
-            <recommend-list></recommend-list>
-          </scroll-view>
-        </swiper-item>
-
-        <!-- 未完成 -->
-        <swiper-item>
-          <scroll-view scroll-y="true" style="height: 100%">
-            <div class="reading-list">
-              <div class="list-item" v-for="(item, index) in 5" :key="index">
-                <book-card></book-card>
-              </div>
-            </div>
-          </scroll-view>
-        </swiper-item>
-
-        <!-- 已完成 -->
-        <swiper-item>
-          <scroll-view scroll-y="true" style="height: 100%">
-            <div class="no-result">
-              <!--<img src="" alt="">-->
-              <div class="title">
-                <p>Oh，No木有已通关的书!</p>
-                <p>加油闯关看书吧！</p>
-              </div>
-            </div>
-          </scroll-view>
-        </swiper-item>
-      </swiper>
-
+    <div class="section-content">
+      <div class="content-title">
+        <img class="catalog-icon" src="/static/images/user.png" background-size="cover" />
+        <span class="text">书籍目录</span>
+      </div>
+      <div class="section-list">
+        <div class="list-item" v-for="item in 5" :key="item">
+          <div class="item-head">
+            <img class="item-head__icon" src="/static/images/user.png" background-size="cover" />
+          </div>
+          <div class="item-body">
+            <span class="body-text">第x章 名称xxxx</span>
+          </div>
+          <div class="item-foot">√</div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import recommendList from '@/components/recommend-list'
-import bookCard from '@/components/book-card'
 
 export default {
   data: function () {
     return {
-      current: '0',
-      TAB_NAME_LIST: [
-        {
-          key: '0',
-          title: '推荐书籍'
-        },
-        {
-          key: '1',
-          title: '未通关'
-        },
-        {
-          key: '2',
-          title: '已通关'
-        }
-      ]
     }
   },
-  components: {
-    recommendList,
-    bookCard
-  },
+  components: {},
   methods: {
-    handleChange ({ target }) {
-      this.current = target.key
-    },
-    tabChange ({ target }) {
-      this.current = target.current
-    }
   },
   onLoad () {
   }
@@ -84,35 +41,88 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
-.reading-list {
-  padding: 20rpx;
-  .list-item {
-    margin-bottom: 20rpx;
-  }
+.section-wrap {
+  background: #F7F7F7;
 }
 
-.no-result {
-  width: 100%;
-  height: 100%;
+.section-name {
   display: flex;
   align-items: center;
-  justify-content: center;
+  background: #fff;
+  padding: 0 50rpx;
+  margin-bottom: 20rpx;
 
-  .title {
-    text-align: center;
-    color: #ccc;
+  .name-image {
+    width: 120rpx;
+    height: 120rpx;
+    margin: 10rpx;
+    border-radius: 50%;
 
-    p:nth-child(1) {
-      font-size: 16px;
-      font-weight: bold;
-      margin-bottom: 10rpx;
+  }
+  .text {
+    font-size: 16px;
+    font-weight: bold;
+  }
+}
+
+
+.section-content {
+  background: #fff;
+
+  .content-title {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10rpx;
+    padding: 10rpx 30rpx;
+
+
+    .catalog-icon {
+      width: 60rpx;
+      height: 60rpx;
+      margin-right: 10rpx;
     }
 
-    p:nth-child(2) {
+    .text {
       font-size: 14px;
+      color: #bbb;
     }
   }
 }
 
+.section-list {
+
+
+  .item-head__icon {
+    width: 60rpx;
+    height: 60rpx;
+    margin-right: 10rpx;
+  }
+
+  .list-item {
+    display: flex;
+    align-items: center;
+    padding: 20rpx 30rpx;
+    margin: 30rpx 50rpx;
+    border-radius: 10rpx;
+    box-shadow: 5rpx 10rpx 15rpx #eee;
+
+    &:first-child {
+      margin-top: 0;
+    }
+
+    .item-head {
+      margin-right: 10rpx;
+
+    }
+
+    .item-body {
+      flex: 1;
+      font-size: 14px;
+    }
+
+    .item-foot {
+
+    }
+  }
+}
 </style>

@@ -27,7 +27,7 @@
           </div>
         </div>
         <div class="options-right">
-          <a class="btn btn-primary circle" style="min-width: 100rpx">去闯关</a>
+          <a class="btn btn-primary circle" style="min-width: 100rpx" @click="toSectionPage()">去闯关</a>
         </div>
       </div>
     </div>
@@ -37,6 +37,7 @@
 <script>
 
 export default {
+  name: 'bookCard',
   props: {
     cardDetails: {
       type: Object,
@@ -45,8 +46,8 @@ export default {
           name: 'Book Name',
           sections: '',
           totalPeople: '',
-          currentLevel: '',
-          allLevel: ''
+          currentLevel: '1',
+          allLevel: '10'
         }
       }
     }
@@ -61,6 +62,12 @@ export default {
     },
     precentStatus () {
       return this.readPrecent === 100 ? 'success' : 'active'
+    }
+  },
+  methods: {
+    toSectionPage () {
+      let url = '../section/main'
+      mpvue.navigateTo({ url })
     }
   }
 }
@@ -114,7 +121,8 @@ export default {
       }
 
       .level-status {
-
+        font-size: 12px;
+        color: #c2c2c2;  
       }
     }
   }
