@@ -11,7 +11,7 @@
         <span class="text">书籍目录</span>
       </div>
       <div class="section-list">
-        <div class="list-item" v-for="item in 5" :key="item">
+        <div class="list-item" v-for="item in 5" :key="item" @click="toQuestionPage">
           <div class="item-head">
             <img class="item-head__icon" src="/static/images/user.png" background-size="cover" />
           </div>
@@ -34,6 +34,10 @@ export default {
   },
   components: {},
   methods: {
+    toQuestionPage () {
+      let url = '../question/main'
+      mpvue.navigateTo({ url })
+    }
   },
   onLoad () {
   }
@@ -104,7 +108,7 @@ export default {
     padding: 20rpx 30rpx;
     margin: 30rpx 50rpx;
     border-radius: 10rpx;
-    box-shadow: 5rpx 10rpx 15rpx #eee;
+    box-shadow: 5rpx 10rpx 30rpx 5rpx #eee;
 
     &:first-child {
       margin-top: 0;
