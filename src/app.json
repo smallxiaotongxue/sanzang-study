@@ -2,6 +2,7 @@
   "pages": [
     "pages/index/main",
     "pages/ranking/main",
+    "pages/my/main",
     "pages/myStudy/main",
     "pages/section/main",
     "pages/question/main",
@@ -33,7 +34,7 @@
       "selectedIconPath": "static/images/tabs/orders-active.png"
     }, {
       "text": "我的",
-      "pagePath": "pages/logs/main",
+      "pagePath": "pages/my/main",
       "iconPath": "static/images/tabs/orders.png",
       "selectedIconPath": "static/images/tabs/orders-active.png"
     }],
