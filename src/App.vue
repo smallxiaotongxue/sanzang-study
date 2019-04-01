@@ -31,6 +31,9 @@ export default {
 </script>
 
 <style lang="scss">
+/* 引入iconfont */
+@import "./assets/iconfont/iconfont";
+
 /* this rule will be remove */
 * {
   transition: width 2s;

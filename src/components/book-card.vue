@@ -122,7 +122,7 @@ export default {
 
       .level-status {
         font-size: 12px;
-        color: #c2c2c2;  
+        color: #c2c2c2;
       }
     }
   }

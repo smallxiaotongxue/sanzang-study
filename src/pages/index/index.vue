@@ -1,5 +1,26 @@
 <template>
-  <div>
+  <div class="index-page">
+
+    <div class="index-function">
+      <div class="function-list">
+        <div class="list-item">
+          <span class="function-icon iconfont icon-home-fill"></span>
+          <span class="name">我的学习</span>
+        </div>
+        <div class="list-item">
+          <span class="function-icon iconfont icon-solution"></span>
+          <span class="name">班级排名</span>
+        </div>
+        <div class="list-item">
+          <span class="function-icon iconfont icon-edit-fill"></span>
+          <span class="name">面试题目</span>
+        </div>
+        <div class="list-item">
+          <span class="function-icon iconfont icon-read"></span>
+          <span class="name">热点资讯</span>
+        </div>
+      </div>
+    </div>
 
     <swiper
       :indicator-dots="true"
@@ -119,6 +140,31 @@ export default {
 </script>
 
 <style scoped lang="scss">
+
+.index-function {
+  color: #fff;
+  padding: 30rpx 40rpx;
+  margin-bottom: 30rpx;
+  background: linear-gradient(to bottom, lighten(#00A8E8, 20), #0e97ff);
+
+  .function-list {
+    display: flex;
+    padding: 30rpx;
+    font-size: 22rpx;
+
+    .list-item {
+      flex: 1;
+      text-align: center;
+    }
+  }
+
+  .function-icon {
+    display: block;
+    font-size: 50rpx;
+    margin-bottom: 10rpx;
+  }
+}
+
 .userinfo {
   display: flex;
   background: aliceblue;
