@@ -4,22 +4,47 @@
     <div class="index-function">
       <div class="function-list">
         <div class="list-item">
-          <span class="function-icon iconfont icon-home-fill"></span>
+          <span class="function-icon iconfont icon-home-fill" @click="goToPage('/pages/myStudy/main')"></span>
           <span class="name">我的学习</span>
         </div>
-        <div class="list-item">
+        <div class="list-item" @click="goToPage('/pages/ranking/main')">
           <span class="function-icon iconfont icon-solution"></span>
           <span class="name">班级排名</span>
         </div>
-        <div class="list-item">
+        <div class="list-item" @click="goToPage('/pages/interview/main')">
           <span class="function-icon iconfont icon-edit-fill"></span>
           <span class="name">面试题目</span>
         </div>
-        <div class="list-item">
+        <div class="list-item" @click="goToPage('/pages/interview/main')">
           <span class="function-icon iconfont icon-read"></span>
           <span class="name">热点资讯</span>
         </div>
       </div>
+
+      <div class="tips">
+        <div class="tips-head">TOP</div>
+        <div class="tips-swiper">
+          <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="3000">
+            <swiper-item v-for="item in inforList" :key="item">
+              <div class="swiper_item">{{item.title}}</div>
+            </swiper-item>
+          </swiper>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="userinfo" @click="bindViewTap">
+      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
+
+      <div class="userinfo-nickname">
+        <div>
+          <div class="name">{{userInfo.nickName}}</div>
+          <div class="name">{{userInfo.class}}</div>
+        </div>
+      </div>
+
+      <img class="userinfo-level" :src="userInfo.level" background-size="cover" />
     </div>
 
     <swiper
@@ -34,44 +59,11 @@
       </swiper-item>
     </swiper>
 
-    <div class="userinfo" @click="bindViewTap">
-      <img class="userinfo-avatar" src="/static/images/user.png" background-size="cover" />
-
-      <div class="userinfo-nickname">
-        <div>
-          <div class="name">{{userInfo.nickName}}</div>
-          <div class="name">{{userInfo.class}}</div>
-        </div>
-      </div>
-
-      <img class="userinfo-level" :src="userInfo.level" background-size="cover" />
-    </div>
-    <!--<form class="form-container">-->
-      <!--<input type="text" class="form-control" :value="motto" placeholder="v-model" />-->
-      <!--<input type="text" class="form-control" v-model="motto" placeholder="v-model" />-->
-      <!--<input type="text" class="form-control" v-model.lazy="motto" placeholder="v-model.lazy" />-->
-    <!--</form>-->
-
-    <div class="function">
-      <div class="function-item" @click="goToPage('/pages/ranking/main')">
-        <div class="function-title">
-          <img class="title-icon" src="/static/images/user.png" background-size="cover" />
-          <span>班级排名</span>
-        </div>
-      </div>
-      <div class="function-item" @click="goToPage('/pages/myStudy/main')">
-        <div class="function-title">
-          <img class="title-icon" src="/static/images/user.png" background-size="cover" />
-          <span>我的学习</span>
-        </div>
-      </div>
-    </div>
-
     <!-- 热门推荐文章 -->
     <div class="articles">
       <div class="articles-title">
         <!--<img alt="图标">-->
-        <span>热门推荐</span>
+        <span class="title-name">热门推荐</span>
       </div>
       <div class="articles-contents">
         <ul class="articles-list">
@@ -88,6 +80,7 @@
               <div class="news-intro">有人问我学习一个新库的最佳途径是什么？我的回答是，就是在实际项目中那样去使用它。在一个真实的项目中会有各种各样的需求，这会促使开发人员去探索和研究这个新库。简言之，只有任务本身才会真正促使你去探索及学习。java 8的新的日期及时间API也是一样。</div>
             </div>
             <div class="item-foot">
+              <div class="news-comment">喜欢</div>
               <div class="news-comment">评论</div>
             </div>
           </li>
@@ -113,6 +106,11 @@ export default {
         'https://images.unsplash.com/photo-1551334787-21e6bd3ab135?w=640',
         'https://images.unsplash.com/photo-1551214012-84f95e060dee?w=640',
         'https://images.unsplash.com/photo-1551446591-142875a901a1?w=640'
+      ],
+      inforList: [
+        { url: 'url', title: '微信小程序swiper实现轮播图，可触发点击事件' },
+        { url: 'url', title: '小程序js实现【滚动文字广播、动态滚动公告栏】动画效果' },
+        { url: 'url', title: '纳尼，要回去毕业答辩了？' }
       ]
     }
   },
@@ -141,15 +139,19 @@ export default {
 
 <style scoped lang="scss">
 
+.index-page {
+  background: #f2f2f2;
+}
+
 .index-function {
   color: #fff;
   padding: 30rpx 40rpx;
-  margin-bottom: 30rpx;
+  margin-bottom: 20rpx;
   background: linear-gradient(to bottom, lighten(#00A8E8, 20), #0e97ff);
 
   .function-list {
     display: flex;
-    padding: 30rpx;
+    padding: 30rpx 30rpx 0;
     font-size: 22rpx;
 
     .list-item {
@@ -160,15 +162,56 @@ export default {
 
   .function-icon {
     display: block;
-    font-size: 50rpx;
+    font-size: 60rpx;
     margin-bottom: 10rpx;
+  }
+
+  .tips {
+    position: relative;
+    bottom: -40rpx;
+    display: flex;
+    align-items: center;
+    background-color: #fff;
+    border-radius: 10rpx;
+    font-size: 24rpx;
+    box-shadow: 0 5rpx 15rpx #ddd;
+
+    .tips-head {
+      color: #0e97ff;
+      font-weight: bold;
+      padding: 0 20rpx;
+      border-right: 1rpx solid #c2c2c2;
+    }
+
+    .tips-swiper {
+      flex: 1;
+      padding: 0 20rpx;
+    }
+
+    .swiper_container {
+      color: #000;
+      width: 100%;
+      height: 60rpx;
+      background-color: #fff;
+
+      .swiper_item {
+        width: 100%;
+        height: 60rpx;
+        line-height: 60rpx;
+        font-size: 22rpx;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        letter-spacing: 2px;
+      }
+    }
   }
 }
 
 .userinfo {
   display: flex;
   background: aliceblue;
-  margin: 20rpx 0;
+  margin: 25rpx 0 20rpx;
   /*box-shadow: 5rpx 5rpx 15rpx 5rpx #ddd;*/
 }
 
@@ -191,57 +234,23 @@ export default {
   }
 }
 
-.function {
-  display: flex;
-  margin: 20rpx 0;
-
-  .function-item {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 20rpx;
-    font-size: 14px;
-    min-height: 70rpx;
-    background: antiquewhite;
-    margin-right: 6rpx;
-    transition: all .3s linear;
-
-    &:active {
-      background: #e2d3bf;
-    }
-
-    &:nth-child(2n) {
-      margin-right: 0;
-    }
-
-    .function-title {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-
-      .title-icon {
-        width: 80rpx;
-        height: 80rpx;
-        margin: 10rpx;
-        border-radius: 50%;
-      }
-    }
-  }
-}
-
 .articles {
   margin: 20rpx 0;
   background: #f2f2f2;
 
   .articles-title {
-    font-size: 14px;
-    color: #0e97ff;
     margin: 10rpx 0;
     padding: 20rpx;
     background: #fff;
     /*box-shadow: 10rpx 10rpx 15rpx 0rpx #ddd;*/
+
+    .title-name {
+      font-size: 14px;
+      font-weight: bold;
+      color: #0e97ff;
+      padding: 0 20rpx;
+      border-left: 8rpx solid #0e97ff;
+    }
   }
 
   .articles-contents {
@@ -322,6 +331,8 @@ export default {
         color: #c2c2c2;
         font-size: 12px;
         vertical-align: center;
+        display: inline-block;
+        margin-right: 20rpx;
 
         &:before {
           content: '';
